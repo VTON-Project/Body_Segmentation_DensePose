@@ -25,5 +25,5 @@ with torch.no_grad():
     outputs = predictor(img)['instances']
 
 results = DensePoseResultExtractor()(outputs)
-out_img = Visualizer().visualize(np.zeros(img.shape, dtype=np.uint8), results)
+out_img = Visualizer(alpha=1).visualize(np.zeros(img.shape, dtype=np.uint8), results)
 cv2.imwrite(OUTPUT_IMAGE_PATH, out_img)
