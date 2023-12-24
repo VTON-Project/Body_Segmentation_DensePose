@@ -48,15 +48,15 @@ class DensePoseChartPredictorOutput:
             return DensePoseChartPredictorOutput(
                 coarse_segm=self.coarse_segm[item].unsqueeze(0),
                 fine_segm=self.fine_segm[item].unsqueeze(0),
-                u=self.u[item].unsqueeze(0),
-                v=self.v[item].unsqueeze(0),
+                u=None, #self.u[item].unsqueeze(0),
+                v=None #self.v[item].unsqueeze(0),
             )
         else:
             return DensePoseChartPredictorOutput(
                 coarse_segm=self.coarse_segm[item],
                 fine_segm=self.fine_segm[item],
-                u=self.u[item],
-                v=self.v[item],
+                u=None, #self.u[item],
+                v=None, #self.v[item],
             )
 
     def to(self, device: torch.device):

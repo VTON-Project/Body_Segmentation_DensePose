@@ -24,9 +24,7 @@ class DensePoseResultsVisualizer:
         boxes_xywh = boxes_xywh.cpu().numpy()
         context = self.create_visualization_context(image_bgr)
         for i, result in enumerate(densepose_result):
-            iuv_array = torch.cat(
-                (result.labels[None].type(torch.float32), result.uv * 255.0)
-            ).type(torch.uint8)
+            iuv_array = result.labels[None].type(torch.uint8)
             self.visualize_iuv_arr(context, iuv_array.cpu().numpy(), boxes_xywh[i])
         image_bgr = self.context_to_image_bgr(context)
         return image_bgr

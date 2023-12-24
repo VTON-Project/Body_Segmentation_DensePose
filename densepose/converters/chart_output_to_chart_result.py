@@ -183,6 +183,6 @@ def densepose_chart_predictor_output_to_result_with_confidences(
     box_xywh = make_int_box(boxes_xywh_abs[0])
 
     labels = resample_fine_and_coarse_segm_to_bbox(predictor_output, box_xywh).squeeze(0)
-    uv = resample_uv_to_bbox(predictor_output, labels, box_xywh)
-    confidences = resample_confidences_to_bbox(predictor_output, labels, box_xywh)
-    return DensePoseChartResultWithConfidences(labels=labels, uv=uv, **confidences)
+    # uv = resample_uv_to_bbox(predictor_output, labels, box_xywh)
+    # confidences = resample_confidences_to_bbox(predictor_output, labels, box_xywh)
+    return DensePoseChartResultWithConfidences(labels=labels, uv=None)

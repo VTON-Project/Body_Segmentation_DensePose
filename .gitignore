@@ -2,3 +2,4 @@ _*
 !*__.py
 
 .vscode
+*.egg-info

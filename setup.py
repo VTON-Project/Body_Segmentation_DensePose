@@ -29,13 +29,13 @@ def get_detectron2_current_version():
 setup(
     name="detectron2-densepose",
     author="FAIR",
-    version=get_detectron2_current_version(),
+    version="0.6",
     url="https://github.com/facebookresearch/detectron2/tree/main/projects/DensePose",
     packages=find_packages(),
     python_requires=">=3.7",
     install_requires=[
         "av>=8.0.3",
-        "detectron2@git+https://github.com/facebookresearch/detectron2.git",
+        "detectron2@git+https://github.com/facebookresearch/detectron2.git", # commit e9f7e2ba15abd7badcb05ef6f5076f06b36a9c5b
         "opencv-python-headless>=4.5.3.56",
         "scipy>=1.5.4",
     ],

@@ -53,13 +53,13 @@ class DensePoseChartPredictor(nn.Module):
             dim_in, dim_out_patches, kernel_size, stride=2, padding=int(kernel_size / 2 - 1)
         )
         # U
-        self.u_lowres = ConvTranspose2d(
-            dim_in, dim_out_patches, kernel_size, stride=2, padding=int(kernel_size / 2 - 1)
-        )
+        # self.u_lowres = ConvTranspose2d(
+        #     dim_in, dim_out_patches, kernel_size, stride=2, padding=int(kernel_size / 2 - 1)
+        # )
         # V
-        self.v_lowres = ConvTranspose2d(
-            dim_in, dim_out_patches, kernel_size, stride=2, padding=int(kernel_size / 2 - 1)
-        )
+        # self.v_lowres = ConvTranspose2d(
+        #     dim_in, dim_out_patches, kernel_size, stride=2, padding=int(kernel_size / 2 - 1)
+        # )
         self.scale_factor = cfg.MODEL.ROI_DENSEPOSE_HEAD.UP_SCALE
         initialize_module_params(self)
 
@@ -89,6 +89,6 @@ class DensePoseChartPredictor(nn.Module):
         return DensePoseChartPredictorOutput(
             coarse_segm=self.interp2d(self.ann_index_lowres(head_outputs)),
             fine_segm=self.interp2d(self.index_uv_lowres(head_outputs)),
-            u=self.interp2d(self.u_lowres(head_outputs)),
-            v=self.interp2d(self.v_lowres(head_outputs)),
+            u=None, #self.interp2d(self.u_lowres(head_outputs)),
+            v=None, #self.interp2d(self.v_lowres(head_outputs)),
         )
